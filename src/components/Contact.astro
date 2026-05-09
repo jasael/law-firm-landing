@@ -1,0 +1,278 @@
+---
+---
+<section id="contacto" class="py-24 bg-secondary relative overflow-hidden px-6">
+  
+  <!-- Decorative Background Shapes -->
+  <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-accent/3 blur-[120px] pointer-events-none"></div>
+  <div class="absolute top-0 left-0 w-full h-12 bg-primary shape-slant-l opacity-25"></div>
+
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 relative z-10">
+    
+    <!-- Left Column: Copy & Conversion Persuasion -->
+    <div class="lg:col-span-5 space-y-6">
+      <div class="space-y-2">
+        <span class="font-sans text-[10px] tracking-widest uppercase font-semibold text-accent block">Reservas</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-wide leading-tight">
+          Agendar Una <span class="text-accent">Consulta Privada</span>
+        </h2>
+        <div class="w-16 h-1 bg-accent mt-2"></div>
+      </div>
+      
+      <p class="font-sans text-sm text-slate-300 leading-relaxed font-light">
+        Por favor, complete nuestro formulario de registro preliminar para coordinar un encuentro confidencial con uno de nuestros socios especialistas.
+      </p>
+      
+      <div class="space-y-4 font-sans text-xs text-slate-400">
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          <span>Tratamiento de Datos Encriptados (Cifrado SSL de extremo a extremo)</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          <span>Estricta Adherencia al Secreto Profesional General de la Abogacía</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          <span>Confirmación de Fecha & Hora en menos de 24 Horas Hábiles</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right Column: Interactive Booking Form with Client Validation -->
+    <div class="lg:col-span-7">
+      <div class="glass-panel p-8 sm:p-10 rounded-sm shadow-2xl relative" id="booking-container">
+        
+        <!-- Successful Feedback Message Segment (Hidden by default) -->
+        <div class="hidden absolute inset-0 bg-secondary/95 backdrop-blur-md z-20 flex-col items-center justify-center text-center p-8 space-y-6" id="booking-success-screen">
+          <div class="w-16 h-16 bg-accent/10 border-2 border-accent text-accent rounded-full flex items-center justify-center animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div class="space-y-2">
+            <h3 class="font-serif text-2xl font-bold text-slate-100">¡Solicitud Recibida!</h3>
+            <p class="font-sans text-xs text-slate-400 uppercase tracking-widest text-accent">ID de Trámite: <span id="booking-success-id">AURE-4829</span></p>
+          </div>
+          <p class="font-sans text-xs sm:text-sm text-slate-300 max-w-md leading-relaxed font-light">
+            Estimado/a <strong id="booking-success-name">Cliente</strong>, su solicitud de consulta ejecutiva ha sido registrada formalmente en nuestro sistema. Uno de nuestros socios directores se pondrá en contacto en las próximas horas.
+          </p>
+          <button class="px-6 py-2.5 border border-accent text-accent hover:bg-accent hover:text-primary transition-all duration-300 font-sans text-xs tracking-widest uppercase font-semibold rounded-sm" id="booking-reset-btn">
+            Nueva Consulta
+          </button>
+        </div>
+
+        <!-- Form fields layout -->
+        <form class="space-y-6 font-sans text-xs" id="booking-form" novalidate>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Fullname Input -->
+            <div class="space-y-2">
+              <label for="booking-name" class="block font-serif text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Nombre Completo <span class="text-accent">*</span></label>
+              <input 
+                type="text" 
+                id="booking-name" 
+                name="name" 
+                required 
+                placeholder="Ej. Dr. Mauricio Macri" 
+                class="w-full bg-primary/60 border border-slate-800 focus:border-accent text-slate-100 px-4 py-3 rounded-xs outline-none transition-colors duration-300 text-xs"
+              />
+              <span class="text-[10px] text-red-400 hidden" id="booking-error-name">Por favor, ingrese su nombre completo.</span>
+            </div>
+            
+            <!-- Email Input -->
+            <div class="space-y-2">
+              <label for="booking-email" class="block font-serif text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Correo Corporativo <span class="text-accent">*</span></label>
+              <input 
+                type="email" 
+                id="booking-email" 
+                name="email" 
+                required 
+                placeholder="Ej. m.macri@corporacion.com" 
+                class="w-full bg-primary/60 border border-slate-800 focus:border-accent text-slate-100 px-4 py-3 rounded-xs outline-none transition-colors duration-300 text-xs"
+              />
+              <span class="text-[10px] text-red-400 hidden" id="booking-error-email">Por favor, ingrese un correo corporativo válido.</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Phone Input -->
+            <div class="space-y-2">
+              <label for="booking-phone" class="block font-serif text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Teléfono de Contacto <span class="text-accent">*</span></label>
+              <input 
+                type="tel" 
+                id="booking-phone" 
+                name="phone" 
+                required 
+                placeholder="Ej. +54 11 1234 5678" 
+                class="w-full bg-primary/60 border border-slate-800 focus:border-accent text-slate-100 px-4 py-3 rounded-xs outline-none transition-colors duration-300 text-xs"
+              />
+              <span class="text-[10px] text-red-400 hidden" id="booking-error-phone">Por favor, ingrese un número telefónico de contacto.</span>
+            </div>
+            
+            <!-- Law Practice Area Selector -->
+            <div class="space-y-2">
+              <label for="booking-area" class="block font-serif text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Área Jurídica <span class="text-accent">*</span></label>
+              <select 
+                id="booking-area" 
+                name="area" 
+                required
+                class="w-full bg-primary/95 border border-slate-800 focus:border-accent text-slate-100 px-4 py-3 rounded-xs outline-none transition-colors duration-300 text-xs appearance-none cursor-pointer"
+              >
+                <option value="" disabled selected>Seleccione área de consulta</option>
+                <option value="corporativo">Derecho Corporativo & Fusiones (M&A)</option>
+                <option value="patentes">Propiedad Intelectual & Patentes</option>
+                <option value="litigios">Litigios de Alto Perfil & Arbitraje</option>
+                <option value="fiscal">Planificación Fiscal & Corporativa</option>
+                <option value="otros">Otros Asuntos de Alta Complejidad</option>
+              </select>
+              <span class="text-[10px] text-red-400 hidden" id="booking-error-area">Por favor, seleccione un área jurídica.</span>
+            </div>
+          </div>
+
+          <!-- Message Details Input -->
+          <div class="space-y-2">
+            <label for="booking-message" class="block font-serif text-[10px] uppercase tracking-widest text-slate-300 font-semibold">Breve Resumen de la Consulta</label>
+            <textarea 
+              id="booking-message" 
+              name="message" 
+              rows="4" 
+              placeholder="Describa brevemente los hechos generales para asignar al abogado idóneo..." 
+              class="w-full bg-primary/60 border border-slate-800 focus:border-accent text-slate-100 px-4 py-3 rounded-xs outline-none transition-colors duration-300 text-xs resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Submit Action Button -->
+          <div class="pt-2">
+            <button 
+              type="submit" 
+              id="booking-submit-btn" 
+              class="gold-gradient-btn w-full py-4 font-sans text-xs uppercase tracking-widest font-bold rounded-xs cursor-pointer flex items-center justify-center space-x-2"
+            >
+              <span id="btn-text">Confirmar Solicitud de Consulta</span>
+              <!-- Spinner (Hidden by default) -->
+              <svg class="w-4 h-4 text-primary animate-spin hidden" id="btn-spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"></circle>
+                <path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Validation, Interaction, and Mock Fetch Delay logic inside client-side JS
+  const form = document.getElementById('booking-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('booking-submit-btn') as HTMLButtonElement | null;
+  const btnText = document.getElementById('btn-text');
+  const btnSpinner = document.getElementById('btn-spinner');
+  const successScreen = document.getElementById('booking-success-screen');
+  const successName = document.getElementById('booking-success-name');
+  const successId = document.getElementById('booking-success-id');
+  const resetBtn = document.getElementById('booking-reset-btn');
+
+  // Input elements
+  const inputName = document.getElementById('booking-name') as HTMLInputElement | null;
+  const inputEmail = document.getElementById('booking-email') as HTMLInputElement | null;
+  const inputPhone = document.getElementById('booking-phone') as HTMLInputElement | null;
+  const selectArea = document.getElementById('booking-area') as HTMLSelectElement | null;
+
+  // Errors markers
+  const errorName = document.getElementById('booking-error-name');
+  const errorEmail = document.getElementById('booking-error-email');
+  const errorPhone = document.getElementById('booking-error-phone');
+  const errorArea = document.getElementById('booking-error-area');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form || !submitBtn) return;
+
+    let hasErrors = false;
+
+    // Validate Name
+    if (!inputName?.value.trim()) {
+      errorName?.classList.remove('hidden');
+      inputName?.classList.add('border-red-400');
+      hasErrors = true;
+    } else {
+      errorName?.classList.add('hidden');
+      inputName?.classList.remove('border-red-400');
+    }
+
+    // Validate Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!inputEmail?.value.trim() || !emailRegex.test(inputEmail.value)) {
+      errorEmail?.classList.remove('hidden');
+      inputEmail?.classList.add('border-red-400');
+      hasErrors = true;
+    } else {
+      errorEmail?.classList.add('hidden');
+      inputEmail?.classList.remove('border-red-400');
+    }
+
+    // Validate Phone
+    if (!inputPhone?.value.trim()) {
+      errorPhone?.classList.remove('hidden');
+      inputPhone?.classList.add('border-red-400');
+      hasErrors = true;
+    } else {
+      errorPhone?.classList.add('hidden');
+      inputPhone?.classList.remove('border-red-400');
+    }
+
+    // Validate Area
+    if (!selectArea?.value) {
+      errorArea?.classList.remove('hidden');
+      selectArea?.classList.add('border-red-400');
+      hasErrors = true;
+    } else {
+      errorArea?.classList.add('hidden');
+      selectArea?.classList.remove('border-red-400');
+    }
+
+    // If validations fail, stop execution
+    if (hasErrors) return;
+
+    // Disable button & show spinner (Loading state)
+    submitBtn.disabled = true;
+    btnText?.classList.add('hidden');
+    btnSpinner?.classList.remove('hidden');
+
+    // Simulate safe API fetch delay (1.5 seconds)
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // Show success screen
+    if (successScreen) {
+      if (successName && inputName) successName.textContent = inputName.value;
+      if (successId) {
+        // Generate random mock legal case ID
+        const randomID = Math.floor(1000 + Math.random() * 9000);
+        successId.textContent = `AURE-${randomID}`;
+      }
+      successScreen.classList.remove('hidden');
+      successScreen.classList.add('flex');
+    }
+
+    // Restore button state
+    submitBtn.disabled = false;
+    btnText?.classList.remove('hidden');
+    btnSpinner?.classList.add('hidden');
+  });
+
+  // Reset form and return to input screen
+  resetBtn?.addEventListener('click', () => {
+    form?.reset();
+    successScreen?.classList.add('hidden');
+    successScreen?.classList.remove('flex');
+  });
+</script>

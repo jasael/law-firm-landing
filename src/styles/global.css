@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0f172a;
+  --color-secondary: #1e293b;
+  --color-accent: #d4af37;
+  --color-accent-dark: #b8860b;
+  --color-accent-light: #f5e6c4;
+  --color-luxury-bg: #fdfbf7;
+  
+  --font-serif: "Cinzel", "Playfair Display", Georgia, serif;
+  --font-sans: "Montserrat", "Inter", system-ui, sans-serif;
+
+  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-draw-line: draw-line 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-gold: pulse-gold 2s infinite;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes draw-line {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  @keyframes pulse-gold {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 8px rgba(212, 175, 55, 0);
+    }
+  }
+}
+
+/* Custom premium styles */
+html {
+  scroll-behavior: smooth;
+  background-color: #0f172a;
+  color: #f8fafc;
+  font-family: var(--font-sans);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(212, 175, 55, 0.3);
+  color: #ffffff;
+}
+
+/* Scrollbar premium styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Metallic gold gradient button */
+.gold-gradient-btn {
+  background: linear-gradient(135deg, #b8860b 0%, #e5c158 50%, #d4af37 100%);
+  color: #0f172a;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px -2px rgba(212, 175, 55, 0.3);
+}
+.gold-gradient-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px 0 rgba(212, 175, 55, 0.5);
+  background: linear-gradient(135deg, #d4af37 0%, #fdfbf7 50%, #b8860b 100%);
+}
+
+/* Clip-path shapes */
+.shape-slant-r {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+.shape-slant-l {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%);
+}
+.shape-angle-b {
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 100%, 0 88%);
+}
+
+/* Text glow hover */
+.text-gold-glow {
+  transition: all 0.3s ease;
+}
+.text-gold-glow:hover {
+  color: #d4af37;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+}

@@ -1,0 +1,76 @@
+---
+const testimonials = [
+  {
+    author: "Andrés Benítez",
+    role: "Socio Director en Finanzas Globales",
+    quote: "Un asesoramiento corporativo sin fisuras. Su estructuración para nuestra última ronda de fusiones y adquisiciones fue quirúrgica y protegió nuestro capital al detalle.",
+    rating: 5
+  },
+  {
+    author: "Dra. Valeria Rossini",
+    role: "CEO de TechVanguard Corporation",
+    quote: "El registro de patentes y marcas internacionales con Aurelius superó todas nuestras expectativas de velocidad y solidez. Tienen un rigor técnico inigualable.",
+    rating: 5
+  },
+  {
+    author: "Ing. Carlos Mendizábal",
+    role: "Director de Operaciones en Latam Steel",
+    quote: "Defendieron nuestros intereses comerciales en un arbitraje complejo con una maestría táctica absoluta. Son el único bufete boutique al que confiamos nuestros casos de alta complejidad.",
+    rating: 5
+  }
+];
+---
+
+<section id="opiniones" class="py-24 bg-secondary relative overflow-hidden px-6">
+  
+  <!-- Subtle top separator slant -->
+  <div class="absolute top-0 left-0 w-full h-12 bg-primary shape-slant-r opacity-20"></div>
+
+  <div class="max-w-7xl mx-auto space-y-16">
+    
+    <!-- Section Header Header -->
+    <div class="max-w-3xl mx-auto text-center space-y-4">
+      <span class="font-sans text-[10px] tracking-widest uppercase font-semibold text-accent block">Opiniones</span>
+      <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-slate-100 tracking-wide leading-tight">
+        La Opinión De <span class="text-accent">Nuestros Clientes</span>
+      </h2>
+      <div class="w-16 h-1 bg-accent mx-auto mt-2"></div>
+      <p class="font-sans text-sm text-slate-400 max-w-xl mx-auto leading-relaxed font-light">
+        La lealtad de nuestros clientes se fundamenta en los resultados tangibles y en el secreto profesional inquebrantable que caracteriza a cada socio de la firma.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6">
+      {testimonials.map((t) => (
+        <div class="glass-panel p-8 rounded-sm hover:border-accent/40 transition-all duration-300 relative group flex flex-col justify-between shadow-lg">
+          
+          <div class="space-y-6">
+            <!-- Executive Star Rating -->
+            <div class="flex space-x-1 text-accent">
+              {[...Array(t.rating)].map(() => (
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                </svg>
+              ))}
+            </div>
+            
+            <!-- Quote Text block -->
+            <p class="font-sans text-xs sm:text-sm text-slate-300 leading-relaxed italic font-light relative">
+              <span class="text-accent/30 font-serif text-5xl absolute -top-4 -left-3 pointer-events-none">“</span>
+              <span class="relative z-10">{t.quote}</span>
+            </p>
+          </div>
+          
+          <!-- Author Bio Info Footer -->
+          <div class="pt-6 border-t border-slate-800/80 mt-6 flex flex-col">
+            <span class="font-serif text-sm font-bold text-slate-100 tracking-wide uppercase group-hover:text-accent transition-colors duration-200">{t.author}</span>
+            <span class="font-sans text-[10px] text-slate-500 uppercase tracking-wider font-medium mt-1">{t.role}</span>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

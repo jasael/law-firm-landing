@@ -1,0 +1,106 @@
+---
+---
+<!-- Sticky Executive Navigation Header -->
+<header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-primary/40 backdrop-blur-md border-b border-white/5" id="main-header">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center space-x-2 focus:outline-none group" id="nav-logo">
+      <!-- Premium Stately Logo using elegant vector shape -->
+      <svg class="w-8 h-8 text-accent group-hover:rotate-12 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22V8M5 12H19M5 12c0-3.87 3.13-7 7-7s7 3.13 7 7M5 12v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" />
+      </svg>
+      <span class="font-serif font-bold text-lg tracking-widest text-slate-100 group-hover:text-accent transition-colors duration-300">
+        AURELIUS<span class="text-accent">&</span>ASOCIADOS
+      </span>
+    </a>
+    
+    <!-- Desktop Nav Items -->
+    <nav class="hidden md:flex items-center space-x-8 font-sans text-xs tracking-widest uppercase font-medium">
+      <a href="/#inicio" class="text-slate-300 hover:text-accent transition-colors duration-200 relative group py-2" id="link-inicio">
+        Inicio
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-300"></span>
+      </a>
+      <a href="/#nosotros" class="text-slate-300 hover:text-accent transition-colors duration-200 relative group py-2" id="link-nosotros">
+        Sobre Nosotros
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-300"></span>
+      </a>
+      <a href="/#servicios" class="text-slate-300 hover:text-accent transition-colors duration-200 relative group py-2" id="link-servicios">
+        Servicios
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-300"></span>
+      </a>
+      <a href="/#opiniones" class="text-slate-300 hover:text-accent transition-colors duration-200 relative group py-2" id="link-opiniones">
+        Opiniones
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-300"></span>
+      </a>
+      <a href="/#contacto" class="text-slate-300 hover:text-accent transition-colors duration-200 relative group py-2" id="link-contacto">
+        Contacto
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-accent group-hover:w-full transition-all duration-300"></span>
+      </a>
+      <a href="/#contacto" class="px-5 py-2.5 border border-accent text-accent hover:bg-accent hover:text-primary transition-all duration-300 font-semibold tracking-wider rounded-xs text-[10px]" id="btn-navbar-cta">
+        Agendar Consulta
+      </a>
+    </nav>
+    
+    <!-- Mobile Burger Trigger -->
+    <button class="md:hidden text-slate-100 hover:text-accent focus:outline-none focus:ring-1 focus:ring-accent p-1" id="mobile-menu-btn" aria-label="Abrir Menú de Navegación">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" id="burger-icon"></path>
+      </svg>
+    </button>
+  </div>
+  
+  <!-- Mobile Navigation Drawer -->
+  <div class="hidden md:hidden absolute top-full left-0 w-full bg-secondary/95 backdrop-blur-lg border-b border-accent/20 flex-col px-6 py-8 space-y-4 shadow-2xl text-center" id="mobile-drawer">
+    <a href="/#inicio" class="block text-slate-200 hover:text-accent py-2 tracking-wider font-sans text-sm uppercase font-medium" id="mobile-link-inicio">Inicio</a>
+    <a href="/#nosotros" class="block text-slate-200 hover:text-accent py-2 tracking-wider font-sans text-sm uppercase font-medium" id="mobile-link-nosotros">Sobre Nosotros</a>
+    <a href="/#servicios" class="block text-slate-200 hover:text-accent py-2 tracking-wider font-sans text-sm uppercase font-medium" id="mobile-link-servicios">Servicios</a>
+    <a href="/#opiniones" class="block text-slate-200 hover:text-accent py-2 tracking-wider font-sans text-sm uppercase font-medium" id="mobile-link-opiniones">Opiniones</a>
+    <a href="/#contacto" class="block text-slate-200 hover:text-accent py-2 tracking-wider font-sans text-sm uppercase font-medium" id="mobile-link-contacto">Contacto</a>
+    <a href="/#contacto" class="inline-block px-6 py-3 border border-accent text-accent font-semibold tracking-widest text-xs uppercase rounded-sm hover:bg-accent hover:text-primary transition-all duration-300 mt-2" id="mobile-btn-cta">
+      Agendar Consulta
+    </a>
+  </div>
+</header>
+
+<script>
+  // Navbar scroll visual effect
+  const header = document.getElementById('main-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header?.classList.add('shadow-2xl', 'bg-secondary/95', 'border-accent/10');
+      header?.classList.remove('bg-primary/40', 'border-white/5');
+    } else {
+      header?.classList.remove('shadow-2xl', 'bg-secondary/95', 'border-accent/10');
+      header?.classList.add('bg-primary/40', 'border-white/5');
+    }
+  });
+
+  // Mobile Menu Drawer toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  const burgerIcon = document.getElementById('burger-icon');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isHidden = mobileDrawer?.classList.contains('hidden');
+    if (isHidden) {
+      mobileDrawer?.classList.remove('hidden');
+      mobileDrawer?.classList.add('flex');
+      // Change burger to "X" icon
+      burgerIcon?.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+    } else {
+      mobileDrawer?.classList.add('hidden');
+      mobileDrawer?.classList.remove('flex');
+      // Restore burger menu lines
+      burgerIcon?.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+    }
+  });
+
+  // Close mobile drawer when clicking any link
+  const drawerLinks = mobileDrawer?.querySelectorAll('a');
+  drawerLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileDrawer?.classList.add('hidden');
+      mobileDrawer?.classList.remove('flex');
+      burgerIcon?.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+    });
+  });
+</script>
