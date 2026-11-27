@@ -240,6 +240,8 @@ import { firmConfig } from '../config/firm';
 </section>
 
 <script>
+  import { saveLegalLead } from '../lib/supabase';
+
   // Script de Triage Legal & Despacho a WhatsApp
   const form = document.getElementById('booking-form') as HTMLFormElement | null;
   const submitBtn = document.getElementById('booking-submit-btn') as HTMLButtonElement | null;
@@ -371,6 +373,20 @@ import { firmConfig } from '../config/firm';
     const urgencyText = selectUrgency?.options[selectUrgency.selectedIndex]?.text || "";
     const modalityText = selectModality?.options[selectModality.selectedIndex]?.text || "";
     const messageVal = textMessage?.value.trim() || "Ninguna observación adicional.";
+
+    // Persistir de forma segura en Supabase (con fallback silencioso)
+    saveLegalLead({
+      firm_id: 'aurelius-asociados',
+      case_id: caseId,
+      client_name: nameVal,
+      client_email: emailVal,
+      client_phone: phoneVal,
+      practice_area: areaText,
+      case_status: statusText,
+      urgency: urgencyText,
+      modality: modalityText,
+      facts_summary: messageVal,
+    }).catch((err) => console.warn('Supabase async save:', err));
 
     // Estructurar el mensaje para WhatsApp
     const waText = 
