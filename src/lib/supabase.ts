@@ -1,18 +1,12 @@
-import { PostgrestClient } from '@supabase/postgrest-js';
+import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL || 'http://127.0.0.1:54321';
+const supabaseUrl =
+  import.meta.env.PUBLIC_SUPABASE_URL || 'https://dxrpsovwgrsrombywjsx.supabase.co';
 const supabaseAnonKey =
   import.meta.env.PUBLIC_SUPABASE_ANON_KEY ||
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM0NDk2MDB9.qRkIuZixRcHTUGttY2fRpjHqhKCa5sPucRJabA7yXPo';
+  'sb_publishable_O2AKPufH98aI9crT_L6Ckg_RXo2U3BV';
 
-const endpoint = supabaseUrl.includes('/rest/v1') ? supabaseUrl : supabaseUrl;
-
-export const supabase = new PostgrestClient(endpoint, {
-  headers: {
-    apikey: supabaseAnonKey,
-    Authorization: `Bearer ${supabaseAnonKey}`,
-  },
-});
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 export interface LegalLeadPayload {
   firm_id: string;
